@@ -1,0 +1,12 @@
+CTGAN, m/n = 1: predicted 0.88, simulated 0.83
+TVAE, m/n = 1: predicted 0.51, simulated 0.53
+Gaussian copula, m/n = 1: predicted 0.53, simulated 0.52
+GAN, m/n = 0.5: predicted 1.10, simulated 1.01
+GAN, m/n = 1: predicted 1.69, simulated 1.19
+GAN, m/n = 2: predicted 1.49, simulated 1.22
+VAE, m/n = 0.5: predicted 0.96, simulated 0.86
+VAE, m/n = 1: predicted 0.88, simulated 0.84
+VAE, m/n = 2: predicted 0.83, simulated 0.72
+Gaussian mixture, m/n = 0.5: predicted 1.10, simulated 0.97
+Gaussian mixture, m/n = 1: predicted 1.14, simulated 1.09
+Gaussian mixture, m/n = 2: predicted 1.47, simulated 1.26
