@@ -1,4 +1,4 @@
-# Replication package for "Pricing Tail Risk with Models Recursively Trained on Synthetic Data"
+# Replication package for "Synthetic Data, Recursive Training, and the Pricing of Tail Risk"
 
 Xiwen Zhao
 

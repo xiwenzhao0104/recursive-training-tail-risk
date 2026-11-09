@@ -1,4 +1,4 @@
-"""Model of "Pricing Tail Risk with Models Recursively Trained on Synthetic Data".
+"""Model of "Synthetic Data, Recursive Training, and the Pricing of Tail Risk".
 
 Notation follows the paper: p* is the true tail probability, n and m are the numbers of real
 and synthetic draws, r = m/n, and h(p) is the probability that a model whose estimate is p
