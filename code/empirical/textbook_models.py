@@ -35,7 +35,7 @@ def main():
         one[name] = {"runs": st, "median": C.median_stats(st)}
         out(row(name, C.median_stats(st)))
     out()
-    json.dump(one, open(C.RES / "textbook_one_round.json", "w"), indent=1)
+    json.dump(one, open(C.RUNS / "textbook_one_round.json", "w"), indent=1)
 
     out("## GAN of other sizes, log losses (median over 3 seeds)")
     out(HEAD)
@@ -58,7 +58,7 @@ def main():
             longrun = np.mean([q["estimate"][-3:] for q in paths])
             out(f"{name}, m/n = {ratio}: one-round ratio {theta:.2f}, Proposition 1 fixed point "
                 f"{100 * p / (1 + ratio * (1 - theta)):.3f}%, simulated long run {100 * longrun:.3f}%")
-    json.dump(rec, open(C.RES / "textbook_recursion.json", "w"), indent=1)
+    json.dump(rec, open(C.RUNS / "textbook_recursion.json", "w"), indent=1)
     out()
     out(f"Total time {time.time() - t0:.0f}s")
     out.save()

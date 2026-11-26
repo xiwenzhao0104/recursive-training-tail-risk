@@ -55,7 +55,7 @@ def part_one():
             st = [C.tail_stats(sdv_sample(name, C.x_real, s, **kw)) for s in range(1, 6)]
             res[f"{name} | {label}"] = {"runs": st, "median": C.median_stats(st)}
             out(row(name, C.median_stats(st)))
-    json.dump(res, open(C.RES / "sdv_one_round.json", "w"), indent=1)
+    json.dump(res, open(C.RUNS / "sdv_one_round.json", "w"), indent=1)
     out.save()
 
 
@@ -73,7 +73,7 @@ def part_other():
         st = [C.tail_stats(sdv_sample(name, C.x_real, s, n=n, **kw)) for s in range(1, 4)]
         res[lab] = {"runs": st, "median": C.median_stats(st)}
         out(row(lab, C.median_stats(st)))
-    json.dump(res, open(C.RES / "sdv_other_settings.json", "w"), indent=1)
+    json.dump(res, open(C.RUNS / "sdv_other_settings.json", "w"), indent=1)
     out.save()
 
 
@@ -93,7 +93,7 @@ def part_rec(gens=6, seeds=(31, 32)):
             f"{100 * p / (2 - theta):.3f}%, simulated long run {100 * longrun:.3f}%")
         for s, q in zip(seeds, paths):
             out(f"   seed {s}: estimate " + " ".join(f"{e:.4f}" for e in q["estimate"]))
-    json.dump(rec, open(C.RES / "sdv_recursion.json", "w"), indent=1)
+    json.dump(rec, open(C.RUNS / "sdv_recursion.json", "w"), indent=1)
     out.save()
 
 
@@ -120,7 +120,7 @@ def part_rec_long(gens=6, seeds=(41, 42, 43, 44)):
     longrun = np.mean([q["estimate"][-3:] for q in paths])
     out(f"CTGAN, 1,000 epochs: one-round ratio {theta:.2f}, Proposition 1 fixed point "
         f"{100 * p / (2 - theta):.3f}%, simulated long run {100 * longrun:.3f}%")
-    json.dump(paths, open(C.RES / "sdv_recursion_ctgan1000.json", "w"), indent=1)
+    json.dump(paths, open(C.RUNS / "sdv_recursion_ctgan1000.json", "w"), indent=1)
     out.save()
 
 

@@ -14,10 +14,10 @@ plt.rcParams.update({"font.family": "serif", "mathtext.fontset": "cm", "font.siz
                      "axes.spines.top": False, "axes.spines.right": False})
 NAVY, ORANGE, RED, GREEN, GREY = "#1f4e79", "#e08214", "#b3202a", "#3a7d34", "#888888"
 
-sdv_one = json.load(open(C.RES / "sdv_one_round.json"))
-tb_one = json.load(open(C.RES / "textbook_one_round.json"))
-sdv_rec = json.load(open(C.RES / "sdv_recursion.json"))
-tb_rec = json.load(open(C.RES / "textbook_recursion.json"))
+sdv_one = json.load(open(C.RUNS / "sdv_one_round.json"))
+tb_one = json.load(open(C.RUNS / "textbook_one_round.json"))
+sdv_rec = json.load(open(C.RUNS / "sdv_recursion.json"))
+tb_rec = json.load(open(C.RUNS / "textbook_recursion.json"))
 
 # Table 1
 rows = [("Real losses", C.real)]
@@ -31,7 +31,7 @@ for name, d in rows:
                                             else "--")
     lines.append(f"{name} | {100 * d['ref']:.1f} | {100 * d['h0.01']:.2f} | {100 * d['h0.005']:.2f}"
                  f" | {100 * d['h0.002']:.2f} | {g} | {d['max']:.0f}")
-(C.RES / "table1.md").write_text("\n".join(lines) + "\n")
+table1 = lines
 print("\n".join(lines))
 
 
@@ -85,8 +85,14 @@ ax.set_xlabel("fixed point predicted by Proposition 1 (%)")
 ax.set_ylabel("long-run estimate after retraining (%)")
 ax.legend(frameon=False, fontsize=8.6, loc="upper left")
 ax.set_title("(b) recursive training", fontsize=10.5)
-(C.RES / "figure1_panel_b.md").write_text("\n".join(rows_b) + "\n")
 print("\n".join(rows_b))
+
+# One results file for Section 5: Table 1, Figure 1(b) and the robustness checks in the text
+logs = ["textbook_results", "sdv_one_round", "sdv_other_settings", "sdv_recursion_ctgan1000"]
+section5 = (["# Section 5", "", "## Table 1"] + table1 + ["", "## Figure 1(b)"] + rows_b + [""]
+            + ["#" + "\n".join(l for l in (C.RUNS / f"{n}.md").read_text().split("\n")
+                         if not l.startswith("Total time")) for n in logs])
+(C.RES / "section5.md").write_text("\n".join(section5).replace("\n\n\n", "\n\n").rstrip() + "\n")
 fig.tight_layout()
 fig.savefig(C.FIG / "fig_evidence.pdf", metadata={"CreationDate": None})
 print("saved", C.FIG / "fig_evidence.pdf")

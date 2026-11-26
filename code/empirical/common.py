@@ -13,8 +13,10 @@ import torch.nn.functional as F
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "danish.csv"
 RES = ROOT / "output" / "results"
+RUNS = ROOT / "output" / "runs"
 FIG = ROOT / "output" / "figures"
 RES.mkdir(parents=True, exist_ok=True)
+RUNS.mkdir(parents=True, exist_ok=True)
 FIG.mkdir(parents=True, exist_ok=True)
 torch.set_num_threads(4)
 
@@ -28,10 +30,10 @@ N_SYN = 400_000          # synthetic draws per model
 
 
 class Log:
-    """Prints lines and saves them to output/results/<name>.md."""
+    """Prints lines and saves them to output/runs/<name>.md."""
 
     def __init__(self, name):
-        self.path, self.lines = RES / f"{name}.md", []
+        self.path, self.lines = RUNS / f"{name}.md", []
 
     def __call__(self, s=""):
         print(s, flush=True)

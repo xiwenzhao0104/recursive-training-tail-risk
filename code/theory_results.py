@@ -152,4 +152,4 @@ for g in [1.10, 1.25]:
     out(f"gamma = {g}: mean excess over any threshold above the reference level "
         f"{1 - (ALPHA - 1) / (g * ALPHA - 1):.0%} lower than in the data")
 
-(OUT / "theory_results.md").write_text("\n".join(lines) + "\n")
+(OUT / "theory.md").write_text("\n".join(lines) + "\n")
